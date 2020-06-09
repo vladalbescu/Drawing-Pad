@@ -6,25 +6,43 @@
   --color-5: #009fb7;
 }
 
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+html {
+  /*1rem = 10px */
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
 body {
-  background-image: linear-gradient(to bottom, var(--color-1), var(--color-2));
+  background-color: var(--color-4);
   min-height: 100vh;
+  padding: 3rem;
   overflow: hidden;
+  font-family: "Balsamiq Sans", cursive;
+
+  text-align: center;
 }
 
 .container {
   --cols: 16;
   --rows: 16;
-  --size: 15px;
+  width: 40vw;
+  height: 40vw;
+  margin: 3rem auto;
 
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  border-radius: 6px;
+  overflow: hidden;
+
   display: grid;
-  grid-template-columns: repeat(var(--cols), var(--size));
-  grid-template-rows: repeat(var(--rows), var(--size));
-  gap: 0px;
+  grid-template-rows: repeat(16, 1fr);
+  grid-template-columns: repeat(16, 1fr);
 }
 
 .square {
@@ -35,4 +53,51 @@ body {
 
 .square--colored {
   background-color: var(--color-5);
+}
+
+h1 {
+  color: var(--color-3);
+  text-shadow: 3px 3px 0px var(--color-5);
+  font-family: "Pacifico", cursive;
+  font-weight: 100;
+  font-size: 6rem;
+  margin-bottom: 1rem;
+}
+
+button {
+  position: fixed;
+  right: 7%;
+  bottom: 5%;
+
+  width: 12rem;
+  height: 12rem;
+  padding: 2rem;
+
+  background-color: var(--color-5);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: 50%;
+
+  font-family: inherit;
+  text-transform: capitalize;
+  font-size: 2rem;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+button:hover,
+button:active {
+  background-color: var(--color-4);
+  color: var(--color-5);
+}
+
+@media (max-width: 500px) {
+  html {
+    font-size: 50%;
+  }
+
+  .container {
+    width: 80vw;
+    height: 80vw;
+  }
 }
