@@ -1,3 +1,5 @@
+let down;
+
 function createGrid(gridSize = 16) {
   let canvas = document.querySelector(".canvas");
 
@@ -21,14 +23,14 @@ function checkForUserPaintingSquares() {
   let squares = selectSquares();
 
   squares.forEach((square) => {
-    square.addEventListener("mouseover", colorSquare);
-    square.addEventListener("touchenter", colorSquare);
+    if (down == 1) {
+      square.addEventListener("mouseover", colorSquare);
+    }
+    square.addEventListener("touchmove", colorSquare);
   });
 
   function colorSquare(e) {
-    if (down == 1) {
-      e.target.classList.add("square--colored");
-    }
+    e.target.classList.add("square--colored");
   }
 }
 
