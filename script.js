@@ -22,7 +22,7 @@ function checkForUserPaintingSquares() {
 
   squares.forEach((square) => {
     square.addEventListener("mouseover", colorSquare);
-    square.addEventListener("touchstart", colorSquare);
+    square.addEventListener("touchenter", colorSquare);
   });
 
   function colorSquare(e) {
