@@ -33,31 +33,41 @@ body {
 .canvas {
   --cols: 16;
   --rows: 16;
-  width: 40vw;
-  height: 40vw;
-  margin: 3rem auto;
+  width: 45vw;
+  height: 45vw;
+  margin: 2rem auto;
+  position: relative;
 
   border-radius: 6px;
+  border: 15px solid var(--color-5);
   overflow: hidden;
   cursor: crosshair;
 
   display: grid;
-  grid-template-rows: repeat(16, 1fr);
-  grid-template-columns: repeat(16, 1fr);
+  gap: 1px;
 }
 
-.popup {
+.canvas::before {
+  content: "";
   position: absolute;
-  bottom: 5%;
-  left: 7%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: gray;
+  z-index: -1;
+}
+
+.change-resolution {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 1rem auto;
 
   width: 25rem;
-  height: 25rem;
-  border-radius: 50%;
+  height: 10rem;
+  border-radius: 3px;
   overflow: hidden;
   padding: 3rem;
 
@@ -66,7 +76,7 @@ body {
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
 }
 
-.popup select {
+.change-resolution select {
   height: 5rem;
   width: 15rem;
   border-radius: 3px;
@@ -75,7 +85,7 @@ body {
   padding-left: 1rem;
 }
 
-.popup select:focus {
+.change-resolution select:focus {
   outline: none;
 }
 
@@ -86,7 +96,7 @@ body {
 }
 
 .square--colored {
-  background-color: var(--color-5);
+  background-color: var(--color-2);
 }
 
 h1 {
@@ -106,20 +116,14 @@ h2 {
 }
 
 button {
-  position: fixed;
-  right: 7%;
-  bottom: 9%;
-
-  width: 12rem;
-  height: 12rem;
-  padding: 2rem;
-
+  width: 15rem;
+  height: 5rem;
+  border-radius: 3px;
   cursor: pointer;
 
   background-color: var(--color-5);
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
   border: none;
-  border-radius: 50%;
 
   font-family: inherit;
   text-transform: capitalize;
@@ -137,7 +141,7 @@ button:focus {
   outline: none;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 1100px) {
   html {
     font-size: 50%;
   }
@@ -145,5 +149,25 @@ button:focus {
   .canvas {
     width: 80vw;
     height: 80vw;
+  }
+}
+
+@media (min-width: 1100px) {
+  .canvas {
+    width: 40vw;
+    height: 40vw;
+  }
+
+  button {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+  }
+
+  .change-resolution {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    margin: 0;
   }
 }
